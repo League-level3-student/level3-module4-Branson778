@@ -6,7 +6,7 @@ public class TestMatchingBrackets {
      * has a matching closing bracket
      */
     public static boolean doBracketsMatch(String b) {
-
+        
         return false;
     }
 }
