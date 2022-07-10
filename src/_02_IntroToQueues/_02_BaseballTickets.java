@@ -35,30 +35,25 @@ import java.util.Arrays;
 
 public class _02_BaseballTickets {
 
-    public static int calculateWaitTime( ArrayDeque<Integer> ticketsQueue, int position ) {
-    	int time = 0;
-    	int value = 0;
-    	int size = ticketsQueue.size();
-       // time += position;
-while(!ticketsQueue.isEmpty()) {
-	int temp = ticketsQueue.pop();
-	if(time==position) {
-		value = temp;
-	}
-	else if(temp==value-(time/size)) {
-		System.out.println(temp);
-		if(temp-1==0) {
+	public static int calculateWaitTime(ArrayDeque<Integer> ticketsQueue, int position) {
+		int time = 0;
+		int value = 0;
+		int size = ticketsQueue.size();
+		// time += position;
+		while (!ticketsQueue.isEmpty()) {
+			int temp = ticketsQueue.pop()-1;
 			time++;
-			break;
+			if(temp==0 && position==0) {
+				break;
+			}
+			if(temp!=0) {
+			ticketsQueue.add(temp);
+			}
+			position--;
+			if(position<0) {
+				position = ticketsQueue.size()-1;
+			}
 		}
+		return time;
 	}
-	if(temp-1<=0) {
-		time++;
-		continue;
-	}
-	ticketsQueue.add(temp-1);
-	time++;
-}
-        return time;
-    }
 }
